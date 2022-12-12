@@ -1,11 +1,12 @@
 import React from "react";
 import ExpenseItem from "./ExpenseItem"
+import Card from "./Card"
 import "./Expenses.css";
 const Expenses = (props) => {
     const {expenses} = props;
     console.log("1",expenses)
     return (
-        <ul className="expenses">
+        <Card className="expenses">
             {expenses?.map(expense => (
                 <ExpenseItem 
                     key={expense.id}
@@ -15,7 +16,7 @@ const Expenses = (props) => {
                 >
                 </ExpenseItem>
             ))}
-       </ul>
+       </Card>
     )
 }
 export default Expenses;
