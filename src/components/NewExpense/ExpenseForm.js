@@ -19,13 +19,14 @@ const ExpenseFormControl = styled.div`
   font-weight: bold;
   margin-bottom: 0.5rem;
   display: block;
+  color: ${props =>  props.inValidProp ? "red" : "ccc"}
 }
 
 & input {
   font: inherit;
   padding: 0.5rem;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid ${props => props.inValidProp ? "red" : "ccc"};
   width: 20rem;
   max-width: 100%;
 }
@@ -96,8 +97,9 @@ const ExpenseForm = (props) => {
       {/* <div className='new-expense__controls'> */}
       <ExpenseFormControls>
         {/* <div className={`new-expense__control ${!isValid.title ? "invalid" : ""}`}> */}
-        <ExpenseFormControl>
-        <label style={{ color: !isValid.title ? "red" : "black" }}>Title</label>
+        <ExpenseFormControl inValidProp={!isValid?.title}>
+        {/* <label style={{ color: !isValid.title ? "red" : "black" }}>Title</label> */}
+        <label>Title</label>
           {!isValid.title ? <span>Please enter title</span> : undefined}
           <br />
           <input
@@ -115,12 +117,11 @@ const ExpenseForm = (props) => {
         {/* </div> */}
         </ExpenseFormControl>
         {/* <div className='new-expense__control'> */}
-        <ExpenseFormControl>
-          <label style={{ color: !isValid.amount ? "red" : "black" }}>Amount</label>
-          {!isValid.amount ? <span style={{ color: !isValid.amount ? "red" : "black" }}>Please enter amount</span> : undefined}
+        <ExpenseFormControl inValidProp={!isValid?.amount}>
+          <label>Amount</label>
+          {!isValid.amount ? <span>Please enter amount</span> : undefined}
           <br /> 
           <input
-            style={{ borderColor: !isValid.amount ? "red" : "black" }}
             name="amount"
             type='number'
             min='0.01'
@@ -136,12 +137,11 @@ const ExpenseForm = (props) => {
         {/* </div> */}
         </ExpenseFormControl>
         {/* <div className='new-expense__control'> */}
-        <ExpenseFormControl>
-          <label style={{ color: !isValid.date ? "red" : "black" }}>Date</label>
-          {!isValid.date ? <span style={{ color: !isValid.date ? "red" : "black" }}>Please enter Date</span> : undefined }
+        <ExpenseFormControl inValidProp={!isValid?.date}> 
+          <label >Date</label>
+          {!isValid.date ? <span>Please enter Date</span> : undefined }
           <br />
           <input
-          style={{ borderColor: !isValid.date ? "red" : "black" }}
             name="date"
             type='date'
             min='2019-01-01'
