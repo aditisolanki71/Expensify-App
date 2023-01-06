@@ -1,6 +1,18 @@
 
+import styled from "styled-components";
 import ExpenseItem from "./ExpenseItem"
-import "./ExpensesList.css"
+
+const FormControl = styled.ul`
+
+    list-style: none;
+    padding: 0;
+  
+    & expenses-list__fallback {
+        color: white;
+        text-align: center;
+    }
+`;
+
 const ExpensesList = (props) => {
     const {items} = props;
     if(items.length === 0) {
@@ -8,7 +20,8 @@ const ExpensesList = (props) => {
     }
     return (
         <>
-            <ul className="expenses-list">
+            {/* <ul className="expenses-list"> */}
+            <FormControl>
             {items?.map(expense => (
                 <ExpenseItem 
                     key={expense.id}
@@ -17,7 +30,8 @@ const ExpensesList = (props) => {
                     date={expense.date}
                 />
             ))}
-            </ul>
+            {/* </ul> */}
+            </FormControl>
         </>
     )
 }
